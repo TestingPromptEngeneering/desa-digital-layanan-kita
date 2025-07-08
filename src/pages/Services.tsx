@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import ServiceCard from "@/components/ServiceCard";
 
 const Services = () => {
+  const navigate = useNavigate();
+  
   const services = [
     {
       title: "Surat Keterangan Domisili",
@@ -47,6 +50,7 @@ const Services = () => {
 
   const handleServiceClick = (title: string) => {
     console.log(`Mengajukan: ${title}`);
+    navigate("/form-surat");
   };
 
   return (
