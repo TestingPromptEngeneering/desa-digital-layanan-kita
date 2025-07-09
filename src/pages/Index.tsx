@@ -6,6 +6,7 @@ import APBCard from "@/components/APBCard";
 import StaffCard from "@/components/StaffCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -146,15 +147,22 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
-            {organizationStaff.map((person, index) => (
-              <StaffCard
-                key={index}
-                name={person.name}
-                position={person.position}
-                department={person.department}
-              />
-            ))}
+          <div className="relative max-w-4xl mx-auto mb-8">
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {organizationStaff.map((person, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                    <StaffCard
+                      name={person.name}
+                      position={person.position}
+                      department={person.department}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
 
           <div className="text-center">
