@@ -147,11 +147,18 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="relative max-w-4xl mx-auto mb-8">
-            <Carousel className="w-full">
+          <div className="relative max-w-6xl mx-auto mb-8">
+            <Carousel 
+              className="w-full"
+              opts={{
+                align: "start",
+                dragFree: true,
+                containScroll: "trimSnaps"
+              }}
+            >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {organizationStaff.map((person, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-80 min-w-0">
                     <StaffCard
                       name={person.name}
                       position={person.position}
@@ -160,8 +167,6 @@ const Index = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
             </Carousel>
           </div>
 
